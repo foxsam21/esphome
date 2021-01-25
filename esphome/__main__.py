@@ -219,7 +219,7 @@ def clean_mqtt(config, args):
     return mqtt.clear_topic(config, args.topic, args.username, args.password, args.client_id)
 
 
-def setup_log(debug=False, quiet=False):
+def setup_log(debug=False, quiet=False, cli_colors=True):
     if debug:
         log_level = logging.DEBUG
         CORE.verbose = True
@@ -236,7 +236,12 @@ def setup_log(debug=False, quiet=False):
 
     try:
         import colorama
-        colorama.init(strip=True)
+        # colorama.init(strip=True)
+        # colorama.init()
+        if cli_colors:
+            colorama.init(strip=True)
+        else:
+            colorama.init()
 
         from colorlog import ColoredFormatter
         logging.getLogger().handlers[0].setFormatter(ColoredFormatter(
@@ -425,6 +430,8 @@ def parse_args(argv):
                         action='store_true')
     parser.add_argument('-q', '--quiet', help="Disable all esphome logs.",
                         action='store_true')
+    parser.add_argument('-c', '--cli_colors', help="Enable colors for command line interface.",
+                        action='store_true')
     parser.add_argument('--dashboard', help=argparse.SUPPRESS, action='store_true')
     parser.add_argument('-s', '--substitution', nargs=2, action='append',
                         help='Add a substitution', metavar=('key', 'value'))
@@ -511,7 +518,7 @@ def run_esphome(argv):
     args = parse_args(argv)
     CORE.dashboard = args.dashboard
 
-    setup_log(args.verbose, args.quiet)
+    setup_log(args.verbose, args.quiet, args.cli_colors)
     if args.command != 'version' and not args.configuration:
         _LOGGER.error("Missing configuration parameter, see esphome --help.")
         return 1
