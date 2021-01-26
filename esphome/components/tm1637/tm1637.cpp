@@ -37,6 +37,16 @@ const uint8_t TM1637_ASCII_TO_RAW[] PROGMEM = {
     0b00000001,           // '-', ord 0x2D
     0b10000000,           // '.', ord 0x2E
     TM1637_UNKNOWN_CHAR,  // '/', ord 0x2F
+    // 0b01111110,           // '0', ord 0x30 Inverted display
+    // 0b00000110,           // '1', ord 0x31 Inverted display
+    // 0b01101101,           // '2', ord 0x32 Inverted display
+    // 0b01001111,           // '3', ord 0x33 Inverted display
+    // 0b00010111,           // '4', ord 0x34 Inverted display
+    // 0b01011011,           // '5', ord 0x35 Inverted display
+    // 0b01111011,           // '6', ord 0x36 Inverted display
+    // 0b00001110,           // '7', ord 0x37 Inverted display
+    // 0b01111111,           // '8', ord 0x38 Inverted display
+    // 0b01011111,           // '9', ord 0x39 Inverted display
     0b01111110,           // '0', ord 0x30
     0b00110000,           // '1', ord 0x31
     0b01101101,           // '2', ord 0x32
