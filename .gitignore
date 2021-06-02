@@ -123,3 +123,8 @@ tests/build/
 tests/.esphome/
 /.temp-clang-tidy.cpp
 .pio/
+esphome/components/rc522/rc522_BACKUP_11435.cpp
+esphome/components/rc522/rc522_BASE_11435.cpp
+esphome/components/rc522/rc522_LOCAL_11435.cpp
+esphome/components/rc522/rc522_REMOTE_11435.cpp
+esphome/components/rc522/rc522.cpp.orig
